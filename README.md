@@ -31,6 +31,9 @@ The primary focus is on:
 
 ## 🏗️ Architecture & Data Flow
 
+<img width="1536" height="1024" alt="Architecture_diagram" src="https://github.com/user-attachments/assets/4bdd628d-cc9d-422a-9ede-b6af151687a4" />
+
+
 Source Files  
 ↓  
 Volume / Landing Zone  
@@ -60,7 +63,7 @@ Gold Layer (Aggregated & BI-ready)
 ## 📊 Medallion Processing Layers
 
 ### 🥉 Bronze Layer
-- Ingest raw data from volumes
+- Raw data is ingested from Databricks Volumes, which map to Amazon S3 in real time.
 - Minimal transformations
 - Schema enforcement
 - Data traceability and audit support
