@@ -31,7 +31,7 @@ The primary focus is on:
 
 ## 🏗️ Architecture & Data Flow
 
-<img width="1536" height="1024" alt="Architecture_diagram" src="https://github.com/user-attachments/assets/4bdd628d-cc9d-422a-9ede-b6af151687a4" />
+<img width="1536" height="1024" alt="Architecture_diagram" src="https://github.com/user-attachments/assets/922ad5cc-a080-46ea-b858-98ccaac685d5" />
 
 
 Source Files  
