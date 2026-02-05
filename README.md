@@ -4,7 +4,7 @@
 
 ![PySpark](https://img.shields.io/badge/PySpark-3.x-orange?style=for-the-badge&logo=apache-spark&logoColor=white)
 ![Architecture](https://img.shields.io/badge/Architecture-Medallion-blue?style=for-the-badge)
-![Status](https://img.shields.io/badge/Status-In%20Progress-yellow?style=for-the-badge)
+![Status](https://img.shields.io/badge/Status-Completed-success?style=for-the-badge)
 
 ## 📋 Table of Contents
 - 🎯 Project Overview  
