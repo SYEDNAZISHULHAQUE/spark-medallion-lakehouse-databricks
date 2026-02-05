@@ -1,87 +1,80 @@
 # 🚀 Spark Medallion Lakehouse – E-commerce Analytics (PySpark)
 
-> A production-style Data Engineering project using Apache Spark (PySpark) and the Medallion Lakehouse approach
+> A production-style end-to-end Data Engineering pipeline using Apache Spark (PySpark) and the Medallion Lakehouse architecture (Bronze, Silver, Gold)
 
 ![PySpark](https://img.shields.io/badge/PySpark-3.x-orange?style=for-the-badge&logo=apache-spark&logoColor=white)
 ![Architecture](https://img.shields.io/badge/Architecture-Medallion-blue?style=for-the-badge)
-![Status](https://img.shields.io/badge/Status-Completed-success?style=for-the-badge)
-
----
+![Status](https://img.shields.io/badge/Status-In%20Progress-yellow?style=for-the-badge)
 
 ## 📋 Table of Contents
 - 🎯 Project Overview  
-- 📂 Repository Overview  
-- 🔄 Data Flow  
-- 📊 Processing Layers  
+- 🏗️ Architecture & Data Flow  
+- 📂 Repository Structure  
+- 📊 Medallion Processing Layers  
 - 🛠️ How to Run  
 - 📈 Use Cases  
 - 🧠 Key Learnings  
-- 🔮 Future Enhancements  
+- 🔮 Roadmap & Future Enhancements  
 - 📞 Connect  
-
----
 
 ## 🎯 Project Overview
 
-This repository demonstrates an end-to-end data engineering pipeline built using Apache Spark (PySpark) and based on the Medallion Lakehouse pattern (Bronze, Silver, and Gold layers).
+This repository demonstrates a production-style data engineering pipeline built using Apache Spark (PySpark) and the Medallion Lakehouse pattern.
 
-Raw e-commerce data is ingested, cleaned, transformed into dimension and fact tables, and finally prepared as analytics-ready datasets for dashboards and reporting.
+The project simulates a real-world e-commerce analytics platform, where raw source data is first landed into storage volumes and then progressively refined through Bronze, Silver, and Gold layers to produce analytics-ready datasets.
 
-### Project Goals
-- Implement Medallion-style data processing
-- Build reusable and scalable PySpark pipelines
-- Create dimension and fact tables
-- Prepare BI-ready datasets
-- Follow production-grade project structuring
+The primary focus is on:
+- Layered data processing using the Medallion architecture
+- Clean and scalable PySpark code structure
+- Building reusable dimension and fact pipelines
+- Preparing BI-ready analytical datasets
 
----
+## 🏗️ Architecture & Data Flow
 
-## 📂 Repository Overview
+Source Files  
+↓  
+Volume / Landing Zone  
+↓  
+Bronze Layer (Raw Ingestion)  
+↓  
+Silver Layer (Cleansed & Modeled)  
+↓  
+Gold Layer (Aggregated & BI-ready)
 
-The repository is organized into the following logical sections:
+### High-Level Flow
 
-- **0_data**  
-  Contains raw e-commerce source data files such as customers, orders, products, and brands.
+| Stage | Description |
+|------|-------------|
+| Source | Raw CSV files (customers, orders, products, brands, etc.) |
+| Volume | Source data moved to mounted storage or volume |
+| Bronze | Raw ingestion with minimal transformations |
+| Silver | Data cleansing, standardization, and data modeling |
+| Gold | Aggregated and denormalized datasets for analytics |
 
-- **1_codes**  
-  Contains all PySpark code, structured into setup, dimension processing, and fact processing modules.
+## 📂 Repository Structure
 
-- **2_dashboard**  
-  Contains denormalized SQL queries used for analytics and dashboard creation.
+<img width="644" height="342" alt="Screenshot 2026-02-05 at 8 20 04 AM" src="https://github.com/user-attachments/assets/5eb47bc0-923f-42aa-b6f8-aef5c8f34aff" />
 
-- **README.md**  
-  Project documentation.
 
----
 
-## 🔄 Data Flow
+## 📊 Medallion Processing Layers
 
-| Step | Description | Output |
-|-----|------------|--------|
-| Ingestion | Load raw CSV files | Bronze data |
-| Cleansing | Data validation and standardization | Silver data |
-| Dimension Modeling | Build dimension tables | Dimension datasets |
-| Fact Modeling | Build transactional facts | Fact datasets |
-| Analytics | Denormalization for reporting | Dashboard-ready views |
+### 🥉 Bronze Layer
+- Ingest raw data from volumes
+- Minimal transformations
+- Schema enforcement
+- Data traceability and audit support
 
----
-
-## 📊 Processing Layers
-
-### Bronze Layer
-- Raw data ingestion with minimal transformations
-- Preserves source data as received
-
-### Silver Layer
+### 🥈 Silver Layer
 - Data cleansing and standardization
+- Handling nulls, duplicates, and invalid records
 - Application of business rules
 - Creation of dimension and fact tables
 
-### Gold Layer
+### 🥇 Gold Layer
 - Aggregated and denormalized datasets
-- Optimized for analytics and BI consumption
-
----
+- Metrics and KPIs for analytics
+- Optimized for BI and reporting use cases
 
 ## 🛠️ How to Run
 
@@ -91,22 +84,21 @@ The repository is organized into the following logical sections:
 - PySpark installed
 
 ### Execution Steps
-1. Initialize Spark session and configurations  
-2. Execute dimension processing scripts  
-3. Execute fact processing scripts  
-4. Use dashboard queries for analytics  
+1. Move raw source files to the configured volume or landing path  
+2. Run Bronze layer ingestion scripts  
+3. Execute Silver layer transformation scripts  
+4. Run Gold layer aggregation scripts  
+5. Use SQL queries for analytics and dashboard creation  
 
----
+Each layer is designed to be independently executable and reusable.
 
 ## 📈 Use Cases
 
 - E-commerce sales reporting
-- Customer behavior analysis
-- Product and brand performance tracking
-- Revenue and order trend analytics
+- Customer behavior and segmentation analysis
+- Product and brand performance analytics
+- Revenue and order trend tracking
 - BI dashboard consumption
-
----
 
 ## 🧠 Key Learnings
 
@@ -116,25 +108,20 @@ The repository is organized into the following logical sections:
 - Writing modular and maintainable Spark code
 - Preparing data for analytical workloads
 
----
-
-## 🔮 Future Enhancements
+## 🔮 Roadmap & Future Enhancements
 
 - Incremental and streaming data ingestion
 - Delta Lake integration
-- Data quality and validation checks
+- Data quality and validation frameworks
 - Workflow orchestration using Airflow or Databricks Jobs
 - Automated testing for Spark transformations
-
----
+- Cloud deployment (AWS / Azure)
 
 ## 📞 Connect
 
-**Author:** Syed Nazish Haque  
-**Role:** Tech Lead  
-**Email:** sn.haque136@gmail.com  
+Author: Syed Nazish Haque  
+Role: Tech Lead / Data Engineer  
+Email: sn.haque136@gmail.com  
 
----
-
-⭐ Star this repository if you find it useful!  
-🚀 Keep building scalable data systems.
+⭐ Star this repository if you find it useful  
+🚀 Keep building scalable data platforms
