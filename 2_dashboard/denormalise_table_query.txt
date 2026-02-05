@@ -1,0 +1,56 @@
+CREATE OR REPLACE VIEW ecommerce.gold.vw_fact_transaction AS
+WITH product_info AS (
+    SELECT
+        product_id,
+        sku,
+        category_code,
+        category_name,
+        brand_code,
+        brand_name,
+        color,
+        size,
+        rating_count
+    FROM ecommerce.gold.gld_dim_products
+),
+date_info AS (
+    SELECT
+        date_id,
+        year,
+        month_name,
+        day_name,
+        is_weekend,
+        quarter,
+        week,
+        EXTRACT(DAYOFWEEK FROM date_id) AS day_of_week_num
+    FROM ecommerce.gold.gld_dim_date
+),
+order_metrics AS (
+    SELECT
+        i.*,
+        i.quantity * i.unit_price AS total_amount,
+        i.discount_amount AS total_discount,
+        CASE WHEN i.quantity * i.unit_price > 500 THEN 1 ELSE 0 END AS high_value_transaction,
+        EXTRACT(HOUR FROM i.transaction_ts) AS hour_of_day
+    FROM ecommerce.gold.gld_fact_order_items i
+)
+
+SELECT
+    o.*,
+    d.year,
+    d.month_name,
+    d.day_name,
+    d.is_weekend,
+    d.quarter,
+    d.week,
+    p.sku,
+    p.category_code,
+    p.category_name,
+    p.brand_code,
+    p.brand_name,
+    p.color,
+    p.size,
+    p.rating_count,
+    o.hour_of_day
+FROM order_metrics o
+LEFT JOIN date_info d ON o.date_id = d.date_id
+LEFT JOIN product_info p ON o.product_id = p.product_id;
